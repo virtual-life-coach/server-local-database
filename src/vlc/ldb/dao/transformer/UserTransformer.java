@@ -30,10 +30,10 @@ public class UserTransformer implements EntityTransformer<UserTO, User> {
         UserTO oldUserTO = entityDAO.readEntity(userTO.getId());
         User user = toModel(oldUserTO);
         user = entityManager.merge(user);
-        user.setName(user.getName());
-        user.setSurname(user.getSurname());
-        user.setBirthday(user.getBirthday());
-        user.setTelegramId(user.getTelegramId());
+        user.setName(userTO.getName());
+        user.setSurname(userTO.getSurname());
+        user.setBirthday(userTO.getBirthday());
+        user.setTelegramId(userTO.getTelegramId());
         entityManager.persist(user);
     }
 }
