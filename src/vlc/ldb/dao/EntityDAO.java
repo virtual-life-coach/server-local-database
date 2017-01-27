@@ -1,5 +1,6 @@
 package vlc.ldb.dao;
 
+import vlc.common.util.Identifiable;
 import vlc.ldb.dao.transformer.EntityTransformer;
 import vlc.ldb.persistence.PersistenceManager;
 
@@ -10,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EntityDAO<T, V> {
+public class EntityDAO<T extends Identifiable, V> {
 
     private EntityTransformer<T, V> transformer;
 
@@ -36,7 +37,13 @@ public class EntityDAO<T, V> {
         EntityManager entityManager = PersistenceManager.instance.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        transformer.updateEntity(entityManager, this, entityTO);
+        String query = "SELECT e FROM " + transformer.getEntityClassName() + " e WHERE e.id=:arg1";
+        Map<String, Object> params = new HashMap<>();
+        params.put("arg1", entityTO.getId());
+        V entity = (V) PersistenceManager.instance.singleResultQuery(entityManager, query, params);
+        transformer.updateEntity(entity, entityTO);
+        entity = entityManager.merge(entity);
+        entityManager.persist(entity);
         transaction.commit();
     }
 

@@ -1,10 +1,7 @@
 package vlc.ldb.dao.transformer;
 
 import vlc.common.to.AppointmentTO;
-import vlc.ldb.dao.EntityDAO;
 import vlc.ldb.model.Appointment;
-
-import javax.persistence.EntityManager;
 
 public class AppointmentTransformer implements EntityTransformer<AppointmentTO, Appointment> {
 
@@ -26,7 +23,10 @@ public class AppointmentTransformer implements EntityTransformer<AppointmentTO, 
     }
 
     @Override
-    public void updateEntity(EntityManager entityManager, EntityDAO<AppointmentTO, Appointment> entityDAO, AppointmentTO entityTO) {
-        // TODO
+    public void updateEntity(Appointment appointment, AppointmentTO appointmentTO) {
+        appointment.setUserId(appointmentTO.getUserId());
+        appointment.setDoctorId(appointmentTO.getDoctorId());
+        appointment.setDate(appointmentTO.getDate());
+        appointment.setLocation(appointmentTO.getLocation());
     }
 }

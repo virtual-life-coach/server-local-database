@@ -1,5 +1,7 @@
 package vlc.common.to;
 
+import vlc.common.util.Identifiable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -7,7 +9,7 @@ import java.io.Serializable;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class MeasurementTO implements Serializable {
+public class MeasurementTO implements Serializable, Identifiable {
 
     private static final long serialVersionUID = 42L;
 
