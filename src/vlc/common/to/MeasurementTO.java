@@ -21,6 +21,14 @@ public class MeasurementTO implements Serializable {
 
     }
 
+    public MeasurementTO(Integer id, Integer userId, String type, String date, Double value) {
+        this.id = id;
+        this.userId = userId;
+        this.type = type;
+        this.date = date;
+        this.value = value;
+    }
+
     public Integer getId() {
         return id;
     }

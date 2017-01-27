@@ -1,8 +1,10 @@
 package vlc.ldb.persistence;
 
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public enum PersistenceManager {
     instance;
@@ -79,11 +81,15 @@ public enum PersistenceManager {
     }
 
     public Integer updateQuery(String query) {
+        return updateQuery(query, new HashMap<String, Object>());
+    }
+
+    public Integer updateQuery(String query, Map<String, Object> parameters) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         System.out.println("\nGoing to run update query: " + query + "\n");
-        int result = entityManager.createQuery(query).executeUpdate();
+        int result = buildQuery(entityManager, query, parameters).executeUpdate();
         transaction.commit();
         return result;
     }

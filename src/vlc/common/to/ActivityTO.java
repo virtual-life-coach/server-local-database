@@ -18,6 +18,11 @@ public class ActivityTO implements Serializable {
 
     }
 
+    public ActivityTO(Integer id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
     public Integer getId() {
         return id;
     }

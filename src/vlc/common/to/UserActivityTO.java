@@ -24,6 +24,18 @@ public class UserActivityTO implements Serializable {
 
     }
 
+    public UserActivityTO(Integer id, Integer activityId, Integer userId, String details, Long targetValue,
+                          Long currentValue, String deadlineDate, Boolean completed) {
+        this.id = id;
+        this.activityId = activityId;
+        this.userId = userId;
+        this.details = details;
+        this.targetValue = targetValue;
+        this.currentValue = currentValue;
+        this.deadlineDate = deadlineDate;
+        this.completed = completed;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -21,6 +21,14 @@ public class DoctorTO implements Serializable {
 
     }
 
+    public DoctorTO(Integer id, String name, String surname, String birthday, String telegramId) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.telegramId = telegramId;
+    }
+
     public Integer getId() {
         return id;
     }

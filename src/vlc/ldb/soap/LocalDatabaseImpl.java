@@ -1,8 +1,9 @@
 package vlc.ldb.soap;
 
+import vlc.common.to.*;
 import vlc.ldb.dao.EntityDAO;
-import vlc.common.to.MeasureTO;
-import vlc.common.to.PersonTO;
+import vlc.ldb.dao.transformer.*;
+import vlc.ldb.model.*;
 
 import javax.jws.WebService;
 import java.util.List;
@@ -10,81 +11,206 @@ import java.util.List;
 @WebService(endpointInterface = "vlc.ldb.soap.LocalDatabase", serviceName="LocalDatabaseService")
 public class LocalDatabaseImpl implements LocalDatabase {
 
+    /* Activity CRUD */
 
-
-
-
-
-
-
-
-    /*
-    * TODO REMOVE BELOW
-    * */
-
-    // #1
     @Override
-    public List<PersonTO> readPersonList() {
-        return EntityDAO.listPeople();
+    public ActivityTO createActivity(ActivityTO activityTO) {
+        EntityDAO<ActivityTO, Activity> activityDAO = new EntityDAO<>(new ActivityTransformer());
+        return activityDAO.createEntity(activityTO);
     }
 
-    // #2
     @Override
-    public PersonTO readPerson(Long personId) {
-        return EntityDAO.getPerson(personId);
+    public ActivityTO readActivity(Integer activityId) {
+        EntityDAO<ActivityTO, Activity> activityDAO = new EntityDAO<>(new ActivityTransformer());
+        return activityDAO.readEntity(activityId);
     }
 
-    // #3
     @Override
-    public PersonTO updatePerson(PersonTO personTO) {
-        return EntityDAO.updatePerson(personTO.getId(), personTO);
+    public void updateActivity(ActivityTO activityTO) {
+        EntityDAO<ActivityTO, Activity> activityDAO = new EntityDAO<>(new ActivityTransformer());
+        activityDAO.updateEntity(activityTO);
     }
 
-    // #4
     @Override
-    public PersonTO createPerson(PersonTO personTO) {
-        personTO.setId(null);
-        return EntityDAO.putPerson(personTO);
+    public void deleteActivity(Integer activityId) {
+        EntityDAO<ActivityTO, Activity> activityDAO = new EntityDAO<>(new ActivityTransformer());
+        activityDAO.deleteEntity(activityId);
     }
 
-    // #5
     @Override
-    public void deletePerson(Long personId) {
-        PersonTO personTO = EntityDAO.getPerson(personId);
-        EntityDAO.deletePerson(personTO);
+    public List<ActivityTO> listActivities() {
+        EntityDAO<ActivityTO, Activity> activityDAO = new EntityDAO<>(new ActivityTransformer());
+        return activityDAO.listEntities();
     }
 
-    // #6
+    
+    /* Appointment CRUD */
+
     @Override
-    public List<MeasureTO> readPersonHistory(Long personId, String measureType) {
-        return EntityDAO.getPersonMeasureHistory(personId, measureType);
+    public AppointmentTO createAppointment(AppointmentTO appointmentTO) {
+        EntityDAO<AppointmentTO, Appointment> appointmentDAO = new EntityDAO<>(new AppointmentTransformer());
+        return appointmentDAO.createEntity(appointmentTO);
     }
 
-    // #7
     @Override
-    public List<String> readMeasureTypes() {
-        return EntityDAO.listMeasure();
+    public AppointmentTO readAppointment(Integer appointmentId) {
+        EntityDAO<AppointmentTO, Appointment> appointmentDAO = new EntityDAO<>(new AppointmentTransformer());
+        return appointmentDAO.readEntity(appointmentId);
     }
 
-    // #8
     @Override
-    public MeasureTO readPersonMeasure(Long personId, String measureType, Long measureId) {
-        return EntityDAO.getPersonMeasure(personId, measureType, measureId);
+    public void updateAppointment(AppointmentTO appointmentTO) {
+        EntityDAO<AppointmentTO, Appointment> appointmentDAO = new EntityDAO<>(new AppointmentTransformer());
+        appointmentDAO.updateEntity(appointmentTO);
     }
 
-    // #9
     @Override
-    public MeasureTO savePersonMeasure(Long personId, MeasureTO measureTO) {
-        return EntityDAO.addMeasure(personId, measureTO);
+    public void deleteAppointment(Integer appointmentId) {
+        EntityDAO<AppointmentTO, Appointment> appointmentDAO = new EntityDAO<>(new AppointmentTransformer());
+        appointmentDAO.deleteEntity(appointmentId);
     }
 
-    // #10
     @Override
-    public MeasureTO updatePersonMeasure(Long personId, MeasureTO measureTO) {
-        return EntityDAO.updateMeasure(personId, measureTO);
+    public List<AppointmentTO> listAppointments() {
+        EntityDAO<AppointmentTO, Appointment> appointmentDAO = new EntityDAO<>(new AppointmentTransformer());
+        return appointmentDAO.listEntities();
     }
 
-    // #11 - Utility
+    
+    /* Doctor CRUD */
+
+    @Override
+    public DoctorTO createDoctor(DoctorTO doctorTO) {
+        EntityDAO<DoctorTO, Doctor> doctorDAO = new EntityDAO<>(new DoctorTransformer());
+        return doctorDAO.createEntity(doctorTO);
+    }
+
+    @Override
+    public DoctorTO readDoctor(Integer doctorId) {
+        EntityDAO<DoctorTO, Doctor> doctorDAO = new EntityDAO<>(new DoctorTransformer());
+        return doctorDAO.readEntity(doctorId);
+    }
+
+    @Override
+    public void updateDoctor(DoctorTO doctorTO) {
+        EntityDAO<DoctorTO, Doctor> doctorDAO = new EntityDAO<>(new DoctorTransformer());
+        doctorDAO.updateEntity(doctorTO);
+    }
+
+    @Override
+    public void deleteDoctor(Integer doctorId) {
+        EntityDAO<DoctorTO, Doctor> doctorDAO = new EntityDAO<>(new DoctorTransformer());
+        doctorDAO.deleteEntity(doctorId);
+    }
+
+    @Override
+    public List<DoctorTO> listDoctors() {
+        EntityDAO<DoctorTO, Doctor> doctorDAO = new EntityDAO<>(new DoctorTransformer());
+        return doctorDAO.listEntities();
+    }
+
+    
+    /* Measurement CRUD */
+
+    @Override
+    public MeasurementTO createMeasurement(MeasurementTO measurementTO) {
+        EntityDAO<MeasurementTO, Measurement> measurementDAO = new EntityDAO<>(new MeasurementTransformer());
+        return measurementDAO.createEntity(measurementTO);
+    }
+
+    @Override
+    public MeasurementTO readMeasurement(Integer measurementId) {
+        EntityDAO<MeasurementTO, Measurement> measurementDAO = new EntityDAO<>(new MeasurementTransformer());
+        return measurementDAO.readEntity(measurementId);
+    }
+
+    @Override
+    public void updateMeasurement(MeasurementTO measurementTO) {
+        EntityDAO<MeasurementTO, Measurement> measurementDAO = new EntityDAO<>(new MeasurementTransformer());
+        measurementDAO.updateEntity(measurementTO);
+    }
+
+    @Override
+    public void deleteMeasurement(Integer measurementId) {
+        EntityDAO<MeasurementTO, Measurement> measurementDAO = new EntityDAO<>(new MeasurementTransformer());
+        measurementDAO.deleteEntity(measurementId);
+    }
+
+    @Override
+    public List<MeasurementTO> listMeasurements() {
+        EntityDAO<MeasurementTO, Measurement> measurementDAO = new EntityDAO<>(new MeasurementTransformer());
+        return measurementDAO.listEntities();
+    }
+
+    
+    /* UserActivity CRUD */
+    
+    @Override
+    public UserActivityTO createUserActivity(UserActivityTO userActivityTO) {
+        EntityDAO<UserActivityTO, UserActivity> userActivityDAO = new EntityDAO<>(new UserActivityTransformer());
+        return userActivityDAO.createEntity(userActivityTO);
+    }
+
+    @Override
+    public UserActivityTO readUserActivity(Integer userActivityId) {
+        EntityDAO<UserActivityTO, UserActivity> userActivityDAO = new EntityDAO<>(new UserActivityTransformer());
+        return userActivityDAO.readEntity(userActivityId);
+    }
+
+    @Override
+    public void updateUserActivity(UserActivityTO userActivityTO) {
+        EntityDAO<UserActivityTO, UserActivity> userActivityDAO = new EntityDAO<>(new UserActivityTransformer());
+        userActivityDAO.updateEntity(userActivityTO);
+    }
+
+    @Override
+    public void deleteUserActivity(Integer userActivityId) {
+        EntityDAO<UserActivityTO, UserActivity> userActivityDAO = new EntityDAO<>(new UserActivityTransformer());
+        userActivityDAO.deleteEntity(userActivityId);
+    }
+
+    @Override
+    public List<UserActivityTO> listUserActivities() {
+        EntityDAO<UserActivityTO, UserActivity> userActivityDAO = new EntityDAO<>(new UserActivityTransformer());
+        return userActivityDAO.listEntities();
+    }
+
+    
+    /* User CRUD */
+
+    @Override
+    public UserTO createUser(UserTO userTO) {
+        EntityDAO<UserTO, User> userDAO = new EntityDAO<>(new UserTransformer());
+        return userDAO.createEntity(userTO);
+    }
+
+    @Override
+    public UserTO readUser(Integer userId) {
+        EntityDAO<UserTO, User> userDAO = new EntityDAO<>(new UserTransformer());
+        return userDAO.readEntity(userId);
+    }
+
+    @Override
+    public void updateUser(UserTO userTO) {
+        EntityDAO<UserTO, User> userDAO = new EntityDAO<>(new UserTransformer());
+        userDAO.updateEntity(userTO);
+    }
+
+    @Override
+    public void deleteUser(Integer userId) {
+        EntityDAO<UserTO, User> userDAO = new EntityDAO<>(new UserTransformer());
+        userDAO.deleteEntity(userId);
+    }
+
+    @Override
+    public List<UserTO> listUsers() {
+        EntityDAO<UserTO, User> userDAO = new EntityDAO<>(new UserTransformer());
+        return userDAO.listEntities();
+    }
+
+    
+    /* Utility */
+
     @Override
     public void resetDB() {
         EntityDAO.initDatabase();
