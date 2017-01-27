@@ -25,7 +25,7 @@ public class EntityDAO<T, V> {
     }
 
     public T readEntity(Integer entityId) {
-        String query = "SELECT e FROM " + transformer.getModelClassName() + " e WHERE e.id=:arg1";
+        String query = "SELECT e FROM " + transformer.getEntityClassName() + " e WHERE e.id=:arg1";
         Map<String, Object> params = new HashMap<>();
         params.put("arg1", entityId);
         V entity = (V) PersistenceManager.instance.singleResultQuery(query, params);
@@ -36,37 +36,19 @@ public class EntityDAO<T, V> {
         EntityManager entityManager = PersistenceManager.instance.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        V entity = transformer.toModel(entityTO);  // TODO unsure here check
-        entity = entityManager.merge(entity);
-        entityManager.persist(entity);
+        transformer.updateEntity(entityManager, this, entityTO);
         transaction.commit();
-        /*
-        ORIGINAL:
-
-        EntityManager entityManager = PersistenceManager.instance.getEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-        System.out.println("\nRunning function\n");
-        Person person = ObjectConverter.toModel(oldpersonTO);
-        person.setId(personId);
-        person = entityManager.merge(person);
-        person.setFirstname(oldpersonTO.getFirstname());
-        person.setLastname(oldpersonTO.getLastname());
-        entityManager.persist(person);
-        transaction.commit();
-        return ObjectConverter.toTO(person);
-        */
     }
 
     public void deleteEntity(Integer entityId) {
-        String query = "DELETE FROM " + transformer.getModelClassName() + " e WHERE e.id=:arg1";
+        String query = "DELETE FROM " + transformer.getEntityClassName() + " e WHERE e.id=:arg1";
         Map<String, Object> params = new HashMap<>();
         params.put("arg1", entityId);
         PersistenceManager.instance.updateQuery(query, params);
     }
 
     public List<T> listEntities() {
-        String query = "SELECT e FROM " + transformer.getModelClassName() + " e";
+        String query = "SELECT e FROM " + transformer.getEntityClassName() + " e";
         List<V> entities = PersistenceManager.instance.listResultQuery(query);
         List<T> entitiesTOs = new ArrayList<>();
         for (V entity : entities) {

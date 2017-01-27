@@ -1,7 +1,10 @@
 package vlc.ldb.dao.transformer;
 
 import vlc.common.to.DoctorTO;
+import vlc.ldb.dao.EntityDAO;
 import vlc.ldb.model.Doctor;
+
+import javax.persistence.EntityManager;
 
 public class DoctorTransformer implements EntityTransformer<DoctorTO, Doctor> {
 
@@ -18,7 +21,12 @@ public class DoctorTransformer implements EntityTransformer<DoctorTO, Doctor> {
     }
 
     @Override
-    public String getModelClassName() {
+    public String getEntityClassName() {
         return Doctor.class.getSimpleName();
+    }
+
+    @Override
+    public void updateEntity(EntityManager entityManager, EntityDAO<DoctorTO, Doctor> entityDAO, DoctorTO entityTO) {
+        // TODO
     }
 }

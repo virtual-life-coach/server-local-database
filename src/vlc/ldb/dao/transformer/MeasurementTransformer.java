@@ -1,7 +1,10 @@
 package vlc.ldb.dao.transformer;
 
 import vlc.common.to.MeasurementTO;
+import vlc.ldb.dao.EntityDAO;
 import vlc.ldb.model.Measurement;
+
+import javax.persistence.EntityManager;
 
 public class MeasurementTransformer implements EntityTransformer<MeasurementTO, Measurement> {
 
@@ -18,7 +21,12 @@ public class MeasurementTransformer implements EntityTransformer<MeasurementTO, 
     }
 
     @Override
-    public String getModelClassName() {
+    public String getEntityClassName() {
         return Measurement.class.getSimpleName();
+    }
+
+    @Override
+    public void updateEntity(EntityManager entityManager, EntityDAO<MeasurementTO, Measurement> entityDAO, MeasurementTO entityTO) {
+        // TODO
     }
 }

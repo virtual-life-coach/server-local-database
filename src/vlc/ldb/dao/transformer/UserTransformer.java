@@ -1,7 +1,10 @@
 package vlc.ldb.dao.transformer;
 
 import vlc.common.to.UserTO;
+import vlc.ldb.dao.EntityDAO;
 import vlc.ldb.model.User;
+
+import javax.persistence.EntityManager;
 
 public class UserTransformer implements EntityTransformer<UserTO, User> {
 
@@ -18,7 +21,19 @@ public class UserTransformer implements EntityTransformer<UserTO, User> {
     }
 
     @Override
-    public String getModelClassName() {
+    public String getEntityClassName() {
         return User.class.getSimpleName();
+    }
+
+    @Override
+    public void updateEntity(EntityManager entityManager, EntityDAO<UserTO, User> entityDAO, UserTO userTO) {
+        UserTO oldUserTO = entityDAO.readEntity(userTO.getId());
+        User user = toModel(oldUserTO);
+        user = entityManager.merge(user);
+        user.setName(user.getName());
+        user.setSurname(user.getSurname());
+        user.setBirthday(user.getBirthday());
+        user.setTelegramId(user.getTelegramId());
+        entityManager.persist(user);
     }
 }
