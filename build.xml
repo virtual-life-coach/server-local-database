@@ -66,7 +66,7 @@
     </target>
 
     <target name="start" description="Register SOAP endpoint">
-        <java classname="introsde.assignment.soap.Publisher" classpath="${build.dir}" fork="true">
+        <java classname="vlc.ldb.soap.Publisher" classpath="${build.dir}" fork="true">
             <arg value="$JAVA_OPTS  -cp"/>
             <classpath>
                 <path location="build"/>

@@ -1,4 +1,4 @@
-package introsde.assignment.to;
+package vlc.common.to;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,6 +8,7 @@ import java.util.Date;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@Deprecated
 public class MeasureTO implements Serializable {
 
     private static final long serialVersionUID = 42L;

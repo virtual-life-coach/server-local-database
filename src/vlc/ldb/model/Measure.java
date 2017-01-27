@@ -1,4 +1,4 @@
-package introsde.assignment.model;
+package vlc.ldb.model;
 
 
 import javax.persistence.*;
@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="Measure")
+@Deprecated
 public class Measure implements Serializable {
 
     @Id

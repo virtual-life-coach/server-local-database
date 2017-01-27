@@ -1,14 +1,26 @@
-package introsde.assignment.soap;
+package vlc.ldb.soap;
 
-import introsde.assignment.dao.EntityDAO;
-import introsde.assignment.to.MeasureTO;
-import introsde.assignment.to.PersonTO;
+import vlc.ldb.dao.EntityDAO;
+import vlc.common.to.MeasureTO;
+import vlc.common.to.PersonTO;
 
 import javax.jws.WebService;
 import java.util.List;
 
-@WebService(endpointInterface = "introsde.assignment.soap.People", serviceName="PeopleService")
-public class PeopleImpl implements People {
+@WebService(endpointInterface = "vlc.ldb.soap.LocalDatabase", serviceName="LocalDatabaseService")
+public class LocalDatabaseImpl implements LocalDatabase {
+
+
+
+
+
+
+
+
+
+    /*
+    * TODO REMOVE BELOW
+    * */
 
     // #1
     @Override

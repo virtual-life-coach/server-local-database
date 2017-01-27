@@ -1,4 +1,4 @@
-package introsde.assignment.soap;
+package vlc.ldb.soap;
 
 import javax.xml.ws.Endpoint;
 import java.net.InetAddress;
@@ -13,7 +13,7 @@ public class Publisher {
             hostname = "localhost";
         }
         String port = "6902";
-        String baseUrl = "/ws/people";
+        String baseUrl = "/ws/ldb";
 
         if (String.valueOf(System.getenv("PORT")) != "null") {
             port = String.valueOf(System.getenv("PORT"));
@@ -21,7 +21,7 @@ public class Publisher {
 
         String endpointUrl = protocol + hostname + ":" + port + baseUrl;
         System.out.println("Starting service...");
-        Endpoint.publish(endpointUrl, new PeopleImpl());
+        Endpoint.publish(endpointUrl, new LocalDatabaseImpl());
         System.out.println("Published. Check out " + endpointUrl + "?wsdl");
     }
 }

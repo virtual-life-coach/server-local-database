@@ -1,7 +1,7 @@
-package introsde.assignment.soap;
+package vlc.ldb.soap;
 
-import introsde.assignment.to.MeasureTO;
-import introsde.assignment.to.PersonTO;
+import vlc.common.to.MeasureTO;
+import vlc.common.to.PersonTO;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -10,7 +10,17 @@ import java.util.List;
 
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.DOCUMENT, use= SOAPBinding.Use.LITERAL) //optional
-public interface People {
+public interface LocalDatabase {
+
+
+
+
+
+
+    /*
+    * TODO REMOVE BELOW
+    * */
+
 
     @WebMethod
     List<PersonTO> readPersonList();

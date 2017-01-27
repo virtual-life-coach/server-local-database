@@ -1,15 +1,16 @@
-package introsde.assignment.dao;
+package vlc.ldb.dao;
 
-import introsde.assignment.model.Measure;
-import introsde.assignment.to.MeasureTO;
-import introsde.assignment.to.PersonTO;
+import vlc.ldb.model.Measure;
+import vlc.ldb.model.Person;
+import vlc.common.to.MeasureTO;
+import vlc.common.to.PersonTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectConverter {
 
-    public static MeasureTO toTO(introsde.assignment.model.Measure measure) {
+    public static MeasureTO toTO(Measure measure) {
         MeasureTO measureTO = new MeasureTO();
         measureTO.setMid(measure.getMid());
         measureTO.setDateRegistered(measure.getDateRegistered());
@@ -19,7 +20,7 @@ public class ObjectConverter {
         return measureTO;
     }
 
-    public static PersonTO toTO(introsde.assignment.model.Person person) {
+    public static PersonTO toTO(Person person) {
         PersonTO personTO = new PersonTO();
         personTO.setId(person.getId());
         personTO.setFirstname(person.getFirstname());
@@ -37,8 +38,8 @@ public class ObjectConverter {
         return personTO;
     }
 
-    public static introsde.assignment.model.Measure toModel(MeasureTO measureTO) {
-        introsde.assignment.model.Measure measure = new introsde.assignment.model.Measure();
+    public static Measure toModel(MeasureTO measureTO) {
+        Measure measure = new Measure();
         if (measureTO.getMid() != null) {
             measure.setMid(measureTO.getMid());
         }
@@ -49,8 +50,8 @@ public class ObjectConverter {
         return measure;
     }
 
-    public static introsde.assignment.model.Person toModel(PersonTO personTO) {
-        introsde.assignment.model.Person person = new introsde.assignment.model.Person();
+    public static Person toModel(PersonTO personTO) {
+        Person person = new Person();
         person.setId(personTO.getId());
         person.setFirstname(personTO.getFirstname());
         person.setLastname(personTO.getLastname());

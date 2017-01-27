@@ -1,4 +1,4 @@
-package introsde.assignment.persistence;
+package vlc.ldb.persistence;
 
 import javax.persistence.*;
 import java.util.List;

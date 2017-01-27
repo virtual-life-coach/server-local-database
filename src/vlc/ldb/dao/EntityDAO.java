@@ -1,10 +1,10 @@
-package introsde.assignment.dao;
+package vlc.ldb.dao;
 
-import introsde.assignment.model.Measure;
-import introsde.assignment.model.Person;
-import introsde.assignment.persistence.PersistenceManager;
-import introsde.assignment.to.MeasureTO;
-import introsde.assignment.to.PersonTO;
+import vlc.ldb.model.Measure;
+import vlc.ldb.model.Person;
+import vlc.ldb.persistence.PersistenceManager;
+import vlc.common.to.MeasureTO;
+import vlc.common.to.PersonTO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -83,7 +83,7 @@ public class EntityDAO {
         return null;
     }
 
-    public static MeasureTO addMeasure(Long personId, introsde.assignment.to.MeasureTO newMeasureTO) {
+    public static MeasureTO addMeasure(Long personId, MeasureTO newMeasureTO) {
         EntityManager entityManager = PersistenceManager.instance.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
