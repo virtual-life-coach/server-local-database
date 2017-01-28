@@ -14,10 +14,10 @@ public class Appointment implements Serializable {
     private Integer id;
 
     @Column(name="userid")
-    private String userId;
+    private Integer userId;
 
     @Column(name="doctorid")
-    private String doctorId;
+    private Integer doctorId;
 
     @Column(name="date")
     private String date;
@@ -29,7 +29,7 @@ public class Appointment implements Serializable {
 
     }
 
-    public Appointment(Integer id, String userId, String doctorId, String date, String location) {
+    public Appointment(Integer id, Integer userId, Integer doctorId, String date, String location) {
         this.id = id;
         this.userId = userId;
         this.doctorId = doctorId;
@@ -45,19 +45,19 @@ public class Appointment implements Serializable {
         this.id = id;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public String getDoctorId() {
+    public Integer getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(String doctorId) {
+    public void setDoctorId(Integer doctorId) {
         this.doctorId = doctorId;
     }
 

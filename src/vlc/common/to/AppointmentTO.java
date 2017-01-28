@@ -14,8 +14,8 @@ public class AppointmentTO implements Serializable, Identifiable {
     private static final long serialVersionUID = 42L;
 
     private Integer id;
-    private String userId;
-    private String doctorId;
+    private Integer userId;
+    private Integer doctorId;
     private String date;
     private String location;
 
@@ -23,7 +23,7 @@ public class AppointmentTO implements Serializable, Identifiable {
 
     }
 
-    public AppointmentTO(Integer id, String userId, String doctorId, String date, String location) {
+    public AppointmentTO(Integer id, Integer userId, Integer doctorId, String date, String location) {
         this.id = id;
         this.userId = userId;
         this.doctorId = doctorId;
@@ -39,19 +39,19 @@ public class AppointmentTO implements Serializable, Identifiable {
         this.id = id;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public String getDoctorId() {
+    public Integer getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(String doctorId) {
+    public void setDoctorId(Integer doctorId) {
         this.doctorId = doctorId;
     }
 
