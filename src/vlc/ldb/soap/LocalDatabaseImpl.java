@@ -192,7 +192,7 @@ public class LocalDatabaseImpl implements LocalDatabase {
     }
 
     @Override
-    public void updateUserActivity(Integer activityId, Long value) {
+    public void updateUserActivityValue(Integer activityId, Long value) {
         EntityDAO<UserActivityTO, UserActivity> userActivityDAO = new EntityDAO<>(new UserActivityTransformer(),
                 new UserActivityProgressUpdater());
         UserActivityTO userActivityTO = new UserActivityTO();
