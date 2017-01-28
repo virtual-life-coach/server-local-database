@@ -16,5 +16,7 @@
         <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.jpa" rev="2.5.2"/>
         <dependency org="org.projectlombok" name="lombok" rev="1.16.10"/>
         <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.jpa.modelgen.processor" rev="2.5.2"/>
+        <dependency org="org.glassfish.jersey.core" name="jersey-client" rev="2.25"/>
+        <dependency org="org.glassfish.jersey.media" name="jersey-media-json-jackson" rev="2.24"/>
     </dependencies>
 </ivy-module>
