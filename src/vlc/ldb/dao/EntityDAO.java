@@ -63,10 +63,10 @@ public class EntityDAO<T extends Identifiable, V> {
         return entitiesTOs;
     }
 
-    public T findByKey(String fieldName, Integer key) {
+    public T findByKey(String fieldName, Object key) {
         String query = "SELECT e FROM " + transformer.getEntityClassName() + " e WHERE e." + fieldName + "=:arg1";
         Map<String, Object> params = new HashMap<>();
-        params.put("arg1", key.toString());
+        params.put("arg1", key);
         V entity = (V) PersistenceManager.instance.singleResultQuery(query, params);
         return transformer.toTO(entity);
     }

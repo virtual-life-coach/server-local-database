@@ -237,7 +237,7 @@ public class LocalDatabaseImpl implements LocalDatabase {
     @Override
     public UserTO getUserByTelegramId(Integer telegramId) {
         EntityDAO<UserTO, User> userDAO = new EntityDAO<>(new UserTransformer(), new UserUpdater());
-        return userDAO.findByKey("telegramId", telegramId);
+        return userDAO.findByKey("telegramId", telegramId.toString());
     }
 
     
