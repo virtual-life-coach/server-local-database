@@ -208,6 +208,12 @@ public class LocalDatabaseImpl implements LocalDatabase {
         return userDAO.listEntities();
     }
 
+    @Override
+    public UserTO getUserByTelegramId(Integer telegramId) {
+        EntityDAO<UserTO, User> userDAO = new EntityDAO<>(new UserTransformer());
+        return userDAO.findByKey("telegramid", telegramId);
+    }
+
     
     /* Utility */
 

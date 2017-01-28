@@ -26,11 +26,7 @@ public class EntityDAO<T extends Identifiable, V> {
     }
 
     public T readEntity(Integer entityId) {
-        String query = "SELECT e FROM " + transformer.getEntityClassName() + " e WHERE e.id=:arg1";
-        Map<String, Object> params = new HashMap<>();
-        params.put("arg1", entityId);
-        V entity = (V) PersistenceManager.instance.singleResultQuery(query, params);
-        return transformer.toTO(entity);
+        return findByKey("id", entityId);
     }
 
     public void updateEntity(T entityTO) {
@@ -62,6 +58,14 @@ public class EntityDAO<T extends Identifiable, V> {
             entitiesTOs.add(transformer.toTO(entity));
         }
         return entitiesTOs;
+    }
+
+    public T findByKey(String fieldName, Integer key) {
+        String query = "SELECT e FROM " + transformer.getEntityClassName() + " e WHERE e." + fieldName + "=:arg1";
+        Map<String, Object> params = new HashMap<>();
+        params.put("arg1", key);
+        V entity = (V) PersistenceManager.instance.singleResultQuery(query, params);
+        return transformer.toTO(entity);
     }
 
     public static void initDatabase() {

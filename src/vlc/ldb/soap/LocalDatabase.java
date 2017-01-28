@@ -118,6 +118,9 @@ public interface LocalDatabase {
     @WebMethod
     List<UserTO> listUsers();
 
+    @WebMethod
+    UserTO getUserByTelegramId(Integer telegramId);
+
 
     /* Utility */
     
