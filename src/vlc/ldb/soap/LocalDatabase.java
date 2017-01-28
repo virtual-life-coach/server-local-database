@@ -100,6 +100,9 @@ public interface LocalDatabase {
     @WebMethod
     List<UserActivityTO> listUserActivities();
 
+    @WebMethod
+    void updateUserActivity(Integer activityId, Long value);
+
 
     /* User CRUD */
 

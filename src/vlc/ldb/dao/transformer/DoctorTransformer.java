@@ -22,11 +22,4 @@ public class DoctorTransformer implements EntityTransformer<DoctorTO, Doctor> {
         return Doctor.class.getSimpleName();
     }
 
-    @Override
-    public void updateEntity(Doctor doctor, DoctorTO doctorTO) {
-        doctor.setName(doctorTO.getName());
-        doctor.setSurname(doctorTO.getSurname());
-        doctor.setBirthday(doctorTO.getBirthday());
-        doctor.setTelegramId(doctorTO.getTelegramId());
-    }
 }

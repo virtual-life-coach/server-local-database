@@ -22,11 +22,4 @@ public class UserTransformer implements EntityTransformer<UserTO, User> {
         return User.class.getSimpleName();
     }
 
-    @Override
-    public void updateEntity(User user, UserTO userTO) {
-        user.setName(userTO.getName());
-        user.setSurname(userTO.getSurname());
-        user.setBirthday(userTO.getBirthday());
-        user.setTelegramId(userTO.getTelegramId());
-    }
 }

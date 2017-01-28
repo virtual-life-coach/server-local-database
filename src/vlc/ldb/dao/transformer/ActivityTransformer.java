@@ -20,8 +20,4 @@ public class ActivityTransformer implements EntityTransformer<ActivityTO, Activi
         return Activity.class.getSimpleName();
     }
 
-    @Override
-    public void updateEntity(Activity activity, ActivityTO activityTO) {
-        activity.setDescription(activityTO.getDescription());
-    }
 }

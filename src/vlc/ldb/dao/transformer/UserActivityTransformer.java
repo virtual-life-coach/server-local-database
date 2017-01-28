@@ -22,14 +22,4 @@ public class UserActivityTransformer implements EntityTransformer<UserActivityTO
         return UserActivity.class.getSimpleName();
     }
 
-    @Override
-    public void updateEntity(UserActivity userActivity, UserActivityTO userActivityTO) {
-        userActivity.setActivityId(userActivityTO.getActivityId());
-        userActivity.setUserId(userActivityTO.getUserId());
-        userActivity.setDetails(userActivityTO.getDetails());
-        userActivity.setTargetValue(userActivityTO.getTargetValue());
-        userActivity.setCurrentValue(userActivityTO.getCurrentValue());
-        userActivity.setDeadlineDate(userActivityTO.getDeadlineDate());
-        userActivity.setCompleted(userActivityTO.getCompleted());
-    }
 }

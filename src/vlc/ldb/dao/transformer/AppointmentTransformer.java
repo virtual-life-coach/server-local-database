@@ -22,11 +22,4 @@ public class AppointmentTransformer implements EntityTransformer<AppointmentTO, 
         return Appointment.class.getSimpleName();
     }
 
-    @Override
-    public void updateEntity(Appointment appointment, AppointmentTO appointmentTO) {
-        appointment.setUserId(appointmentTO.getUserId());
-        appointment.setDoctorId(appointmentTO.getDoctorId());
-        appointment.setDate(appointmentTO.getDate());
-        appointment.setLocation(appointmentTO.getLocation());
-    }
 }

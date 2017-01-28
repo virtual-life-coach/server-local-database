@@ -22,11 +22,4 @@ public class MeasurementTransformer implements EntityTransformer<MeasurementTO, 
         return Measurement.class.getSimpleName();
     }
 
-    @Override
-    public void updateEntity(Measurement measurement, MeasurementTO measurementTO) {
-        measurement.setUserId(measurementTO.getUserId());
-        measurement.setType(measurementTO.getType());
-        measurement.setDate(measurementTO.getDate());
-        measurement.setValue(measurementTO.getValue());
-    }
 }
