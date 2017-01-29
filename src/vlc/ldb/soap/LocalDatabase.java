@@ -7,6 +7,9 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
+/**
+ * The API which SOAP will expose. Provides CRUD methods for every entity.
+ */
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.DOCUMENT, use= SOAPBinding.Use.LITERAL) // optional
 public interface LocalDatabase {

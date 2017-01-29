@@ -4,6 +4,9 @@ import javax.xml.ws.Endpoint;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * Register endpoint to expose a web service via SOAP.
+ */
 public class Publisher {
 
     public static void main(String[] args) throws UnknownHostException, ClassNotFoundException {

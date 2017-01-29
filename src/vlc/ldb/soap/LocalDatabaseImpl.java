@@ -9,6 +9,9 @@ import vlc.ldb.model.*;
 import javax.jws.WebService;
 import java.util.List;
 
+/**
+ * The API interface which SOAP will expose. Provides CRUD methods for every entity.
+ */
 @WebService(endpointInterface = "vlc.ldb.soap.LocalDatabase", serviceName="LocalDatabaseService")
 public class LocalDatabaseImpl implements LocalDatabase {
 
