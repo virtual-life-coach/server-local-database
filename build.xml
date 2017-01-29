@@ -61,6 +61,8 @@
             <fileset dir="${webcontent.dir}">
                 <include name="*.xml"/>
                 <include name="**/*.xml"/>
+                <include name="index.html"/>
+                <include name="loading_cube.gif"/>
             </fileset>
         </copy>
     </target>
